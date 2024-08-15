@@ -1,0 +1,306 @@
+{% extends "base.html" %} {% block body %}
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-3 text-uppercase text-success">TechTok</a>
+    <div class="d-flex justify-content-center flex-grow-1">
+      <form role="search" class="d-flex w-100 max-w-md">
+        <input
+          class="form-control me-2"
+          type="text"
+          name="query"
+          value="{{query}}"
+          placeholder="Search for news..."
+        />
+        <button id="search-btn" class="btn btn-primary" type="submit">
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <h2 class="my-4 text-center">Welcome to TechTok</h2>
+
+  <div class="container-fluid">
+    <div class="row gx-2 gy-3">
+      <div class="col-6 col-md-4 col-lg-3">
+        <a
+          href="/?query=Software Development"
+          class="btn btn-outline-success w-100 text-center fs-6 text-nowrap text-truncate"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Software Development"
+        >
+          Software Development
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <a
+          href="/?query=Cloud Computing"
+          class="btn btn-outline-success w-100 text-center fs-6 text-nowrap text-truncate"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Cloud Computing"
+        >
+          Cloud Computing
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <a
+          href="/?query=Cybersecurity"
+          class="btn btn-outline-success w-100 text-center fs-6 text-nowrap text-truncate"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Cybersecurity"
+        >
+          Cybersecurity
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <a
+          href="/?query=Artificial Intelligence & Machine Learning"
+          class="btn btn-outline-success w-100 text-center fs-6 text-nowrap text-truncate"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="AI & ML"
+        >
+          AI & ML
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <a
+          href="/?query=DevOps & Automation"
+          class="btn btn-outline-success w-100 text-center fs-6 text-nowrap text-truncate"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="DevOps & Automation"
+        >
+          DevOps & Automation
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <a
+          href="/?query=Networking Technology & Connectivity"
+          class="btn btn-outline-success w-100 text-center fs-6 text-nowrap text-truncate"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Networking & Connectivity"
+        >
+          Networking & Connectivity
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <a
+          href="/?query=Data Science & Big Data"
+          class="btn btn-outline-success w-100 text-center fs-6 text-nowrap text-truncate"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Data Science & Big Data"
+        >
+          Data Science & Big Data
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <a
+          href="/?query=Web Development"
+          class="btn btn-outline-success w-100 text-center fs-6 text-nowrap text-truncate"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Web Development"
+        >
+          Web Development
+        </a>
+      </div>
+      <div class="col-6 offset-3 col-md-4 offset-md-4 col-lg-3 offset-lg-3">
+        <a
+          href="/?query=Blockchain & Cryptocurrency"
+          class="btn btn-outline-success w-100 text-center fs-6 text-nowrap text-truncate"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Blockchain & Cryptocurrency"
+        >
+          Blockchain & Cryptocurrency
+        </a>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3">
+        <a
+          href="/?query=Technology Industry Trends"
+          class="btn btn-outline-success w-100 text-center fs-6 text-nowrap text-truncate"
+          data-bs-toggle="tooltip"
+          data-bs-placement="top"
+          title="Tech Industry Trends"
+        >
+          Tech Industry Trends
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5">
+    <div class="row">
+      <!-- Carousel Section (50% width) -->
+      <div class="col-md-6">
+        <div
+          id="carouselExampleCaptions"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators">
+            {% for article in tech_articles %}
+            <button
+              type="button"
+              data-bs-target="#carouselExampleCaptions"
+              data-bs-slide-to="{{ loop.index0 }}"
+              class="{% if loop.index == 1 %}active{% endif %}"
+              aria-current="{% if loop.index == 1 %}true{% endif %}"
+              aria-label="Slide {{ loop.index }}"
+            ></button>
+            {% endfor %}
+          </div>
+          <div class="carousel-inner">
+            {% for article in tech_articles %}
+            <div
+              class="carousel-item {% if loop.index == 1 %}active{% endif %}"
+            >
+              <div class="overlay-container">
+                {% if article.urlToImage %}
+                <img
+                  src="{{ article.urlToImage }}"
+                  class="d-block w-100"
+                  alt="{{ article.title }}"
+                />
+                {% endif %}
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>{{ article.title }}</h5>
+                  <p>{{ article.description }}</p>
+                </div>
+                <div class="overlay"></div>
+                <!-- Background overlay -->
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Trending Section (50% width) -->
+      <div class="col-md-3">
+        <!-- Trending Job Tech -->
+        <div class="mb-4">
+          <h4>Trending Job Tech</h4>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <a
+                href="https://www.coursera.org/courses?query=cloud%20engineer"
+                target="_blank"
+                >Cloud Engineer</a
+              >
+            </li>
+            <li class="list-group-item">
+              <a
+                href="https://www.udemy.com/topic/data-science/"
+                target="_blank"
+                >Data Scientist</a
+              >
+            </li>
+            <li class="list-group-item">
+              <a
+                href="https://www.coursera.org/courses?query=cybersecurity"
+                target="_blank"
+                >Cybersecurity Analyst</a
+              >
+            </li>
+            <li class="list-group-item">
+              <a href="https://www.udemy.com/topic/devops/" target="_blank"
+                >DevOps Engineer</a
+              >
+            </li>
+            <li class="list-group-item">
+              <a
+                href="https://www.coursera.org/courses?query=artificial%20intelligence"
+                target="_blank"
+                >AI/ML Specialist</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <h4>Trending Tech Industry</h4>
+        <ul class="list-group">
+          <li class="list-group-item">Artificial Intelligence</li>
+          <li class="list-group-item">Blockchain</li>
+          <li class="list-group-item">Quantum Computing</li>
+          <li class="list-group-item">5G Networks</li>
+          <li class="list-group-item">Internet of Things (IoT)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container custom-container">
+  <div class="row">
+    {% for article in articles %}
+    <div class="col-md-3">
+      <div
+        class="card mb-4 news-article"
+        style="
+          border: none;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+          overflow: hidden;
+          transition: transform 0.3s ease;
+        "
+      >
+        {% if article.urlToImage %}
+        <img
+          src="{{ article.urlToImage }}"
+          alt="Article Image"
+          class="card-img-top"
+          style="height: 180px; object-fit: cover"
+        />
+        {% endif %}
+        <div class="card-body" style="padding: 15px">
+          <h5 class="card-title" style="font-weight: 600; font-size: 1.1rem">
+            <a
+              href="{{ article.url }}"
+              target="_blank"
+              style="text-decoration: none; color: #333"
+            >
+              {{ article.title }}
+            </a>
+          </h5>
+          <p class="card-text" style="font-size: 0.9rem; color: #555">
+            {{ article.description }}
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

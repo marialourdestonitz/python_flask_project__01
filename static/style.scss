@@ -1,0 +1,116 @@
+
+  body {
+    background-color: #1c1c1c;
+    color: #ffffff;
+  }
+
+  /* Navbar styling */
+.navbar {
+    background-color: #0A192F; /* Adjust background color as needed */
+  }
+  
+  /* Container to center content */
+  .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Centering form in the navbar */
+  .d-flex {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1; /* Allow the form container to grow */
+  }
+  
+  .max-w-md {
+    max-width: 600px; /* Set a max-width for the form */
+  }
+  
+  .form-control {
+    border-radius: 0;
+    background-color: #0A192F; /* Match with navbar background */
+    color: #FFFFFF;
+    border: 1px solid #64FFDA;
+  }
+  
+  .btn-primary {
+    background-color: #64FFDA;
+    border-color: #64FFDA;
+    color: #0A192F;
+    margin-left: 5px; /* Space between input and button */
+  }
+  
+  .btn-primary:hover {
+    background-color: #00FF41; /* Hover color for button */
+    border-color: #00FF41;
+    color: #0A192F;
+  }
+  
+
+  .carousel-caption h5 {
+    color: #00ff41;
+  }
+
+  .list-group-item {
+    background-color: #0a192f;
+    color: #64ffda;
+    border-color: #64ffda;
+  }
+
+  .list-group-item:hover {
+    background-color: #64ffda;
+    color: #0a192f;
+  }
+
+  .container-fluid {
+    padding-top: 20px;
+  }
+
+  h2 {
+    color: #00ff41;
+  }
+
+  .carousel-inner {
+      height: 320px;
+  }
+
+
+  .carousel-item img{
+    width: 400px;
+    height: 280px; 
+    object-fit: cover;
+  }
+
+  .custom-container {
+    margin-top: 20px; 
+    margin-bottom: 20px;
+  }
+
+  .overlay-container {
+    position: relative;
+    height: 100%;
+}
+
+.overlay-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Black with 50% opacity */
+    z-index: 1; /* Ensures overlay is on top of the image */
+}
+
+.carousel-caption {
+    position: absolute;
+    z-index: 2; /* Ensures caption is on top of the overlay */
+    bottom: 20px;
+    left: 20px;
+    color: white; /* Ensures text is visible */
+}
